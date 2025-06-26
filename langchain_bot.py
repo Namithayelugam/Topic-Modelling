@@ -2,7 +2,7 @@ import os
 import joblib  # type: ignore
 from dotenv import load_dotenv
 from openai import OpenAI # type: ignore
-
+from sentence_transformers import SentenceTransformer
 # Load environment variables
 load_dotenv()
 
@@ -14,7 +14,7 @@ client = OpenAI(
 
 # Load MLP model and encoder
 clf = joblib.load("models/topic_classifier.pkl")
-encoder = joblib.load("models/sentence_encoder")
+encoder = SentenceTransformer("models/sentence_encoder")
 
 # Prompt template builder
 def build_prompt(question, answer, mlp_topic, user_prompt):
