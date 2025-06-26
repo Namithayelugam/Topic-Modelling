@@ -12,5 +12,5 @@ ollama
 pymongo
 python-dotenv
 openai>=1.0.0
-
+numpy
 #streamlit run app.py

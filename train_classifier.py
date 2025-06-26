@@ -7,6 +7,8 @@ from langchain_community.vectorstores import Chroma # type: ignore
 from langchain.docstore.document import Document # type: ignore
 import os
 from sklearn.neural_network import MLPClassifier # type: ignore
+import torch
+
 
 # Load dataset
 df = pd.read_csv("/Users/dr/Downloads/third_stage_filtered_data.csv")
@@ -15,8 +17,9 @@ labels = df["third_filter"].tolist()
 
 # Encode text
 encoder = SentenceTransformer("all-MiniLM-L6-v2")
-X = encoder.encode(texts, show_progress_bar=True)
-
+encoder = encoder.to(torch.device("cpu"))
+X = encoder.encode(texts, show_progress_bar=True,convert_to_numpy=True)
+encoder.save("models/sentence_encoder")
 # Train classifier
 clf = MLPClassifier(hidden_layer_sizes=(128, 64), max_iter=500, random_state=42)
 clf.fit(X, labels)
@@ -24,6 +27,6 @@ clf.fit(X, labels)
 # Save model & encoder
 #os.makedirs("models", exist_ok=True)
 joblib.dump(clf, "models/topic_classifier.pkl")
-joblib.dump(encoder, "models/sentence_encoder")
+
 
 
