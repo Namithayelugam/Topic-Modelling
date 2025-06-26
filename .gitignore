@@ -1,0 +1,24 @@
+# Environment & Secrets
+.env
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Model files
+*.pkl
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VSCode or PyCharm project folders (optional)
+.vscode/
+.idea/
+
+# Jupyter Notebook checkpoints (if used)
+.ipynb_checkpoints/
+
+# Streamlit logs (optional)
+.streamlit/*.log
