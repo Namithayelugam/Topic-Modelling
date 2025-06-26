@@ -8,8 +8,7 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-# Model files
-*.pkl
+
 
 # System files
 .DS_Store

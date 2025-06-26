@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st # type: ignore
 from langchain_bot import predict_mlp_topic, refine_with_groq
 
 from auth.auth_handler import (

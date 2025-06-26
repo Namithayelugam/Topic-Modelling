@@ -14,7 +14,7 @@ client = OpenAI(
 
 # Load MLP model and encoder
 clf = joblib.load("models/topic_classifier.pkl")
-encoder = joblib.load("models/sentence_encoder.pkl")
+encoder = joblib.load("models/sentence_encoder")
 
 # Prompt template builder
 def build_prompt(question, answer, mlp_topic, user_prompt):
